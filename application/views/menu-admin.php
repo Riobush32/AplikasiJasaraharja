@@ -94,7 +94,7 @@
 					<li class="nav-item">
 						<a href="<?= site_url('laporan/survei')?>" class="nav-link ">
 							<i class="nav-icon fas fa-file"></i>
-							<p>laporan Survei</p>
+							<p>laporan</p>
 						</a>
 					</li>
 
