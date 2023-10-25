@@ -51,7 +51,7 @@ class Survei extends CI_Controller{
 			// ambil no urut terakhir
 			$this->db->limit(1);
 			$this->db->order_by('NoUrut', 'desc');
-			$cek = $this->db->get_where('tbl_survei',)->row();
+			$cek = $this->db->get_where('tbl_survei')->row();
 			$no_urut = $cek->NoUrut + 1;
 
 			$id_pengaju = $this->input->post('id',TRUE);

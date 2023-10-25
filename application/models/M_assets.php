@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_assets extends CI_Model {
 
 	private $table = "management_asset";
-	
-	
+ 
+ 
 	function __construct(){
 		parent::__construct();
 		$this->db = $this->load->database('default',TRUE);

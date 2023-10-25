@@ -55,7 +55,7 @@
 											</td>
 											<td><?= $key->nama_asset ?></td>
 											<td><?= $key->qrcode_data ?></td>
-											<td><img width="50" src="./qrcode/<?= $key->qrcode_path ?>" alt="QrCode: <?= $key->qrcode_data ?>"></td>
+											<td><img width="200" src="./qrcode/<?= $key->qrcode_path ?>" alt="QrCode: <?= $key->qrcode_data ?>"></td>
 										</tr>
 										<?php
                 }5
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 
-
+					<div id="map"></div>
 			</div><!-- /.container-fluid -->
 		</section>
 		<!-- SELESAI DISINI -->
@@ -98,6 +98,11 @@
 								<input type="text" name="nama_asset" class="form-control" required="">
 							</div>
 
+							<div class="form-group">
+								<label>Alamat</label>
+								<input type="text" name="alamat" class="form-control" required="">
+							</div>
+
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
 							<a href="<?= site_url('rumahsakit'); ?>" class="btn btn-danger btn-sm">Cancel</a>
@@ -111,3 +116,7 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"
+        defer
+      ></script>

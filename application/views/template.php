@@ -40,6 +40,8 @@
       height: 260px;
     }
   </style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-collapse  text-sm">

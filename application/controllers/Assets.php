@@ -36,7 +36,7 @@ class Assets extends CI_Controller
 
 	public function proses(){
 		if($this->session->userdata('akses') == 1){
-			$qrcode_data = $this->_generate_data_qrcode();
+			$qrcode_data = $this->input->post('alamat');
 			$data = [
 				'nama_asset'  => $this->input->post('nama_asset',TRUE),
 				'qrcode_path'   => $this->_generate_qrcode($this->input->post('nama_asset'),$qrcode_data),
