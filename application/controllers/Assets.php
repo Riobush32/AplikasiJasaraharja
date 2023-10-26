@@ -18,7 +18,7 @@ class Assets extends CI_Controller
 		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
 			$data = [
                 'title' => "Management Assets",
-			    'rs' => $this->assets->getDataAssets()->result(),
+			    'assets' => $this->assets->getDataAssets()->result(),
 			    'view' => 'managementassets/view'
             ];
 			$this->load->view('template', $data);
@@ -26,24 +26,31 @@ class Assets extends CI_Controller
 	}
 
 	// cetak data rumah sakit
-	public function cetak(){
-		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
-			$data = ['title' => "List Rumah Sakit",
-			'rs' => $this->rumahsakit->getDataRumahSakit()->result()];
-			$this->load->view('rumahsakit/cetak-rs', $data);
-		}
-	}
+	// public function cetak(){
+	// 	if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
+	// 		$data = ['title' => "List Rumah Sakit",
+	// 		'rs' => $this->rumahsakit->getDataRumahSakit()->result()];
+	// 		$this->load->view('rumahsakit/cetak-rs', $data);
+	// 	}
+	// }
 
 	public function proses(){
 		if($this->session->userdata('akses') == 1){
-			$qrcode_data = $this->input->post('alamat');
+			$qrcode_data = $this->input->post('lokasi');
 			$data = [
-				'nama_asset'  => $this->input->post('nama_asset',TRUE),
-				'qrcode_path'   => $this->_generate_qrcode($this->input->post('nama_asset'),$qrcode_data),
-				'qrcode_data' =>  $qrcode_data,
+				'nama_barang'  => $this->input->post('nama_barang',TRUE),
+				'merk'  => $this->input->post('merk',TRUE),
+				'type'  => $this->input->post('type',TRUE),
+				'asal'  => $this->input->post('asal',TRUE),
+				'tahun'  => $this->input->post('tahun',TRUE),
+				'jumlah'  => $this->input->post('jumlah',TRUE),
+				'nomor_activa'  => $this->input->post('nomor_activa',TRUE),
+				'lokasi'  => $this->input->post('lokasi',TRUE),
+				'keterangan'  => $this->input->post('keterangan',TRUE),
+				'qrcode'   => $this->_generate_qrcode($this->input->post('nama_barang'),$qrcode_data),
 			];
 
-				$this->crud->insert_data($data, 'tbl_management_assets');
+				$this->crud->insert_data($data, 'tbl_assets');
 				$this->session->set_flashdata('info', "Good Job!#Data Rumah Sakit Berhasil Di Simpan#1");
 				redirect('assets');
 		}

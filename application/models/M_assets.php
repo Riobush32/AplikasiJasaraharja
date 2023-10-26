@@ -13,7 +13,7 @@ class M_assets extends CI_Model {
 
 
 	public function getDataAssets(){
-		$query =  $this->db->get('tbl_management_assets');
+		$query =  $this->db->get('tbl_assets');
 		return $query;
 	}
 

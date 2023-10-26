@@ -37,9 +37,16 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Nama</th>
-											<th>Qr Code Image</th>
-											<th>Qr Code Data</th>
+											<th>Nama barang</th>
+											<th>Merk</th>
+											<th>Type</th>
+											<th>Asal</th>
+											<th>Tahun</th>
+											<th>Jumlah</th>
+											<th>Nomor Activa</th>
+											<th>Lokasi</th>
+											<th>keterangan</th>
+											<th>QrCode</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -47,15 +54,22 @@
 										<?php 
                 
                 $no=1;
-                foreach ($rs as $key ) { ?>
+                foreach ($assets as $key ) { ?>
 
 										<tr>
 											<td width="30px">
 												<center><?= $no++ ?></center>
 											</td>
-											<td><?= $key->nama_asset ?></td>
-											<td><?= $key->qrcode_data ?></td>
-											<td><img width="200" src="./qrcode/<?= $key->qrcode_path ?>" alt="QrCode: <?= $key->qrcode_data ?>"></td>
+											<td><?= $key->nama_barang ?></td>
+											<td><?= $key->merk ?></td>
+											<td><?= $key->type ?></td>
+											<td><?= $key->asal ?></td>
+											<td><?= $key->tahun ?></td>
+											<td><?= $key->jumlah ?></td>
+											<td><?= $key->nomor_activa ?></td>
+											<td><?= $key->lokasi ?></td>
+											<td><?= $key->keterangan ?></td>
+											<td><img width="200" src="./qrcode/<?= $key->qrcode ?>" alt="QrCode: <?= $key->qrcode ?>"></td>
 										</tr>
 										<?php
                 }5
@@ -68,7 +82,6 @@
 					</div>
 				</div>
 
-					<div id="map"></div>
 			</div><!-- /.container-fluid -->
 		</section>
 		<!-- SELESAI DISINI -->
@@ -94,14 +107,50 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label>Nama</label>
-								<input type="text" name="nama_asset" class="form-control" required="">
+								<label>Nama Barang</label>
+								<input type="text" name="nama_barang" class="form-control" required="" placeholder="Masukkan nama barang...">
 							</div>
 
 							<div class="form-group">
-								<label>Alamat</label>
-								<input type="text" name="alamat" class="form-control" required="">
+								<label>Merk</label>
+								<input type="text" name="merk" class="form-control" required="" placeholder="Masukkan merk...">
 							</div>
+
+							<div class="form-group">
+								<label>Type</label>
+								<input type="text" name="type" class="form-control" required="" placeholder="Masukkan type...">
+							</div>
+
+							<div class="form-group">
+								<label>Asal</label>
+								<input type="text" name="asal" class="form-control" required="" placeholder="Masukkan asal...">
+							</div>
+
+							<div class="form-group">
+								<label>Tahun</label>
+								<input type="text" name="tahun" class="form-control" required="" placeholder="Masukkan tahun...">
+							</div>
+
+							<div class="form-group">
+								<label>Jumlah</label>
+								<input type="text" name="jumlah" class="form-control" required="" placeholder="Masukkan jumlah...">
+							</div>
+
+							<div class="form-group">
+								<label>Nomor Activa</label>
+								<input type="text" name="nomor_activa" class="form-control" required="" placeholder="Masukkan Nomor Activa...">
+							</div>
+
+							<div class="form-group">
+								<label>lokasi</label>
+								<input type="text" name="lokasi" class="form-control" required="" placeholder="Masukkan Lokasi...">
+							</div>
+
+							<div class="form-group">
+								<label>Keterangan</label>
+								<input type="text" name="keterangan" class="form-control" required="" placeholder="Masukkan Keterangan...">
+							</div>
+
 
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
@@ -116,7 +165,3 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"
-        defer
-      ></script>
