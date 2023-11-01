@@ -99,6 +99,12 @@
 							<p>lokasi</p>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= site_url('barang')?>" class="nav-link">
+							<i class="nav-icon fas fa-circle"></i>
+							<p>barang</p>
+						</a>
+					</li>
 
 				</ul>
 			</li>
