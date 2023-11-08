@@ -23,6 +23,17 @@ class Lokasi extends CI_Controller
 		}
 	}
 
+	public function detail($id){
+		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
+			$detail = $this->db->get_where('tbl_lokasi',['id_lokasi' => $id]);
+			
+			$data = ['title' => "Lokasi",
+			'lokasi' => $detail->row(),
+			'view' => 'lokasi/detail'];
+			$this->load->view('template', $data);
+		}
+	}
+
 	
 
 	// proses tambah lokasi
@@ -32,10 +43,59 @@ class Lokasi extends CI_Controller
 			$data = ['nama_lokasi'  => $this->input->post('nama_lokasi',TRUE),
 			'alamat'  => $this->input->post('alamat',TRUE),
 			'link_maps' =>  $this->input->post('link_maps',TRUE),
-            'qrcode'   => $this->_generate_qrcode($this->input->post('nama_barang'),$qrcode_data),];
+            'qrcode'   => $this->_generate_qrcode($this->input->post('nama_lokasi'),$qrcode_data),];
 
 			$this->crud->insert_data($data, 'tbl_lokasi');
 			$this->session->set_flashdata('info', "Good Job!#Data lokasi Berhasil Di Simpan#1");
+			redirect('lokasi');
+		}
+	}
+
+
+
+	// proses edit
+	public function edit($id){
+		if($this->session->userdata('akses') == 1 ){
+			$detail = $this->db->get_where('tbl_lokasi',['id_lokasi' => $id]);
+
+			$data = [
+				'title' => "Update Informasi lokasi",
+				'edit' => $detail->row(),
+				'view' => 'lokasi/edit-lokasi',
+			];
+
+			$this->load->view('template', $data);
+		}
+	}
+
+	// Proses update
+	public function update(){
+		if($this->session->userdata('akses') == 1 ){
+			$where = ['id_lokasi'=> $this->input->post('id',TRUE)];
+			$qrcode_data = $this->input->post('link_maps');
+
+			$data = [
+				'nama_lokasi'  => $this->input->post('nama_lokasi',TRUE),
+			'alamat'  => $this->input->post('alamat',TRUE),
+			'link_maps' =>  $this->input->post('link_maps',TRUE),
+            'qrcode'   => $this->_generate_qrcode($this->input->post('nama_lokasi'),$qrcode_data),
+			];
+
+		$this->crud->update_data($where,$data, 'tbl_lokasi');
+		$this->session->set_flashdata('info', "Good Job!#Data lokasi Berhasil Di Update#1");
+		redirect('lokasi');
+
+		}
+	}
+
+	
+	// proses hapus 
+	public function delete($id){
+		if($this->session->userdata('akses') == 1){
+			$where = ['id_lokasi'=> $id];
+
+			$this->crud->delete_data($where, 'tbl_lokasi');
+			$this->session->set_flashdata('info', "Good Job!#Data lokasi Berhasil Di Hapus#1");
 			redirect('lokasi');
 		}
 	}

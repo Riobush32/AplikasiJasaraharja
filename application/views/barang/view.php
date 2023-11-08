@@ -58,6 +58,19 @@
 											<td><?= $key->merk ?></td>
 											<td><?= $key->type ?></td>
 											<td><?= $key->jumlah ?></td>
+											<td width="200px">
+												<center>
+													<?php if($this->session->userdata('akses') == 1 ) : ?>
+													<a href="<?= site_url('barang/edit/'.$key->id_barang);?>" class="btn btn-primary btn-sm">
+														<i class="fa fa-edit"></i>
+													</a>
+													<?php endif ?>
+													<!--   <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
+													<a href="<?= site_url('barang/delete/'.$key->id_barang);?>" class="btn btn-danger btn-sm">
+														<i class="fa fa-trash"></i>
+													</a>
+												</center>
+											</td>
 										</tr>
 										<?php }  ?>
 
@@ -113,7 +126,7 @@
 							</div>
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
-							<a href="<?= site_url('rumahsakit'); ?>" class="btn btn-danger btn-sm">Cancel</a>
+							<a href="<?= site_url('barang'); ?>" class="btn btn-danger btn-sm">Cancel</a>
 
 						</div>
 					</div>

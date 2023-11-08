@@ -77,8 +77,8 @@ class Rumahsakit extends CI_Controller
 		$this->session->set_flashdata('info', "Good Job!#Data Rumah Sakit Berhasil Di Update#1");
 		redirect('rumahsakit');
 
+		}
 	}
-}
 
 	// ini bagian detail rumah sakit
 public function detail($id){

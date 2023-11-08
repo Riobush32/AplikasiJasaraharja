@@ -37,10 +37,11 @@
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Nama_lokasi</th>
-											<th>Alamat</th>
+											<th>Nama lokasi</th>
+											<!-- <th>Alamat</th>
 											<th>Link_Google_Maps</th>
-                                            <th>QrCode</th>
+                                            <th>QrCode</th> -->
+											<th>Action</th>
 									</thead>
 									<tbody>
 										<?php 
@@ -53,9 +54,26 @@
 												<center><?= $no++ ?></center>
 											</td>
 											<td><?= $key->nama_lokasi ?></td>
-											<td><?= $key->alamat ?></td>
-											<td><?= $key->link_maps ?></td>
-											<td><img width="200" src="./qrcode/<?= $key->qrcode ?>" alt="QrCode: <?= $key->qrcode ?>"></td>
+											<!-- <td><?= $key->alamat ?></td> -->
+											<!-- <td><?= $key->link_maps ?></td>
+											<td><img width="200" src="./qrcode/<?= $key->qrcode ?>" alt="QrCode: <?= $key->qrcode ?>"></td> -->
+												<td width="200px">
+												<center>
+													<?php if($this->session->userdata('akses') == 1 ) : ?>
+													<a href="<?= site_url('lokasi/edit/'.$key->id_lokasi);?>" class="btn btn-primary btn-sm">
+														<i class="fa fa-edit"></i>
+													</a>
+													<?php endif ?>
+													<!--   <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
+													<a href="<?= site_url('lokasi/delete/'.$key->id_lokasi);?>" class="btn btn-danger btn-sm">
+														<i class="fa fa-trash"></i>
+													</a>
+													<!--   <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
+													<a href="<?= site_url('lokasi/detail/'.$key->id_lokasi);?>" class="btn btn-warning btn-sm">
+														<i class="fa fa-info"></i>
+													</a>
+												</center>
+											</td>
 										</tr>
 										<?php }  ?>
 
@@ -115,5 +133,9 @@
 		</div>
 		<!-- /.modal-content -->
 	</div>
+	
 	<!-- /.modal-dialog -->
+
+	
 </div>
+
