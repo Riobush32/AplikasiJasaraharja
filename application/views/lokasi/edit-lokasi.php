@@ -48,7 +48,7 @@
 
 
                     <input type="submit" class="btn btn-primary btn-sm" value="Update">
-                    <a href="<?= site_url('lokasi'); ?>" class="btn btn-danger btn-sm">Cancel</a>
+                    <a href="<?= site_url('lokasi/detail/'.$edit->id_lokasi );?> " class="btn btn-danger btn-sm">Cancel</a>
 
                   </div>
                 </div>

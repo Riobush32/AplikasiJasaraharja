@@ -12,6 +12,9 @@ class Lokasi extends CI_Controller
 			redirect('login');
 		}
 		$this->load->model('M_lokasi','lokasi',TRUE);
+		$this->load->model('M_barang','barang',TRUE);
+		$this->load->model('M_aktiva','aktiva',TRUE);
+
 	}
 
 	public function index(){
@@ -25,10 +28,15 @@ class Lokasi extends CI_Controller
 
 	public function detail($id){
 		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
+
+			$barang = $this->barang->getDataBarang()->result();
 			$detail = $this->db->get_where('tbl_lokasi',['id_lokasi' => $id]);
+			$aktiva = $this->db->get_where('tbl_activa',['id_lokasi' => $id]);
 			
 			$data = ['title' => "Lokasi",
 			'lokasi' => $detail->row(),
+			'barang' => $barang,
+			'aktiva' => $aktiva->row(),
 			'view' => 'lokasi/detail'];
 			$this->load->view('template', $data);
 		}

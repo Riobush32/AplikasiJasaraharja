@@ -60,17 +60,13 @@
 												<td width="200px">
 												<center>
 													<?php if($this->session->userdata('akses') == 1 ) : ?>
-													<a href="<?= site_url('lokasi/edit/'.$key->id_lokasi);?>" class="btn btn-primary btn-sm">
+													<!-- <a href="<?= site_url('lokasi/edit/'.$key->id_lokasi);?>" class="btn btn-primary btn-sm">
 														<i class="fa fa-edit"></i>
-													</a>
+													</a> -->
 													<?php endif ?>
-													<!--   <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
-													<a href="<?= site_url('lokasi/delete/'.$key->id_lokasi);?>" class="btn btn-danger btn-sm">
-														<i class="fa fa-trash"></i>
-													</a>
-													<!--   <a href="" class="btn btn-danger btn-sm">Hapus</a> -->
-													<a href="<?= site_url('lokasi/detail/'.$key->id_lokasi);?>" class="btn btn-warning btn-sm">
-														<i class="fa fa-info"></i>
+													
+													<a href="<?= site_url('lokasi/detail/'.$key->id_lokasi);?>" class="btn btn-info btn-sm">
+														Detail
 													</a>
 												</center>
 											</td>
