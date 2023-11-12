@@ -87,12 +87,12 @@
 					</p>
 				</a>
 				<ul class="nav nav-treeview">
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a href="<?= site_url('assets')?>" class="nav-link">
 							<i class="nav-icon fas fa-circle"></i>
 							<p>Inventory</p>
 						</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a href="<?= site_url('lokasi')?>" class="nav-link">
 							<i class="nav-icon fas fa-circle"></i>

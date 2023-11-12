@@ -31,18 +31,30 @@ class Lokasi extends CI_Controller
 
 			$barang = $this->barang->getDataBarang()->result();
 			$detail = $this->db->get_where('tbl_lokasi',['id_lokasi' => $id]);
-			$aktiva = $this->db->get_where('tbl_activa',['id_lokasi' => $id]);
+			$activa = $this->get_filtered_data($id, 'tbl_activa', 'id_lokasi');
 			
 			$data = ['title' => "Lokasi",
 			'lokasi' => $detail->row(),
 			'barang' => $barang,
-			'aktiva' => $aktiva->row(),
+			'aktiva' => $activa,
 			'view' => 'lokasi/detail'];
 			$this->load->view('template', $data);
 		}
 	}
 
-	
+	public function get_filtered_data($id, $table, $column){
+		$this->db->select('*');
+		$this->db->from($table);
+
+		if(!empty($id))
+		{
+			$this->db->where($column , $id);
+		}
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 
 	// proses tambah lokasi
 	public function add(){

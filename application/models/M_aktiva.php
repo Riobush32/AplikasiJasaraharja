@@ -17,5 +17,6 @@ class M_aktiva extends CI_Model {
 		return $query;
 	}
 
+
     
 }

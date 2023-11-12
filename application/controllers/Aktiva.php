@@ -37,9 +37,6 @@ class Aktiva extends CI_Controller
             $sisa_barang = $barang->jumlah - $jumlah;
 
             $data_barang = [
-				'jenis_barang'  => $barang->jenis_barang,
-				'merk'  => $barang->merk,
-				'type' =>  $barang->type,
 				'jumlah' =>  $sisa_barang,
 			];
 
@@ -61,5 +58,87 @@ class Aktiva extends CI_Controller
 			redirect('lokasi/detail/'.$id_lokasi);
 		}
 	}
+
+	// proses edit
+	public function edit($id){
+		if($this->session->userdata('akses') == 1 ){
+			$detail = $this->db->get_where('tbl_activa',['id_aktiva' => $id]);
+			$barang = $this->barang->getDataBarang()->result();
+
+			$data = [
+				'title' => "Update Aktiva",
+				'edit' => $detail->row(),
+				'view' => 'lokasi/edit-aktiva',
+				'barang' => $barang,
+			];
+
+			$this->load->view('template', $data);
+		}
+	}
+
+	// Proses update
+	public function update($id){
+		if($this->session->userdata('akses') == 1 ){
+			$where = ['id_aktiva'=> $this->input->post('id',TRUE)];
+
+			
+
+			$data = [
+				'id_lokasi'  => $this->input->post('id_lokasi'),
+				'id_barang'  => $this->input->post('id_barang'),
+				'nomor_aktiva' =>  $this->input->post('nomor_aktiva',TRUE),
+				'asal' =>  $this->input->post('asal',TRUE),
+				'ket' =>  $this->input->post('ket',TRUE),
+				'jumlah' =>  $this->input->post('jumlah', TRUE),
+				'tahun' =>  $this->input->post('tahun',TRUE),
+			];
+
+		$this->crud->update_data($where,$data, 'tbl_activa');
+		$this->session->set_flashdata('info', "Good Job!#Data aktiva Berhasil Di Update#1");
+		redirect('lokasi/detail/'.$this->input->post('id_lokasi'));
+
+		}
+	}
+
+	// proses hapus 
+	public function delete($id, $id_lokasi){
+		if($this->session->userdata('akses') == 1){
+			$where = ['id_aktiva'=> $id];
+
+			$this->crud->delete_data($where, 'tbl_activa');
+			$this->session->set_flashdata('info', "Good Job!#Data aktiva Berhasil Di Hapus#1");
+			redirect('lokasi/detail/'.$id_lokasi);
+		}
+	}
+
+	// cetak aktiva
+	public function print($id){
+		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ){
+			$cek = $this->db->get_where('tbl_lokasi',['id_lokasi'=> $id])->row();
+			$activa = $this->get_filtered_data($id, 'tbl_activa', 'id_lokasi');
+
+			$data = ['title' => "Dashboard",
+					 'lokasi' =>$cek,
+					 'activa' => $activa,						''
+					];
+			$this->load->view('lokasi/cetak-activa', $data);
+		}
+	}
+
+
+	public function get_filtered_data($id, $table, $column){
+		$this->db->select('*');
+		$this->db->from($table);
+
+		if(!empty($id))
+		{
+			$this->db->where($column , $id);
+		}
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 
 }

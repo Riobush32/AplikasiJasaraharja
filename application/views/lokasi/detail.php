@@ -57,6 +57,14 @@
 									</a>
 									<?php endif ?>
 								</dd>
+								<dt class="col-sm-3">
+									<a href="<?= site_url('aktiva/print/'.$lokasi->id_lokasi);?>"
+										class="btn btn-warning btn-xl">
+										<i class="fa fa-file"></i> Print
+									</a>
+								</dt>
+								<dd class="col-sm-9">
+								</dd>
 							</dl>
 						</div>
 					</div>
@@ -82,17 +90,34 @@
 									<tr>
 										<th scope="col">No</th>
 										<th scope="col">Jenis Barang</th>
-										<!-- <th scope="col">Merk</th>
-										<th scope="col">Type</th> -->
 										<th scope="col">Jumlah</th>
+										<th scope="col">action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php  $no=1; foreach ($aktiva as $key ) { ?>
 									<tr>
+
 										<th scope="row"><?= $no ?></th>
-										<td><?= $key->id_barang ?></td>
-										<!-- <td><?= $key->jumlah ?></td> -->
+										<td>
+											<?php
+												$data_barang = $this->db->get_where('tbl_barang',['id_barang' => $key->id_barang]);
+												$deteail_barang = $data_barang->row();
+												echo $deteail_barang->jenis_barang;
+
+											?>
+										</td>
+										<td><?= $key->jumlah ?></td>
+										<td>
+											<a href="<?= site_url('aktiva/edit/'.$key->id_aktiva);?>"
+												class="btn btn-primary btn-sm">
+												<i class="fa fa-edit"></i> Edit
+											</a>
+											<a href="<?= site_url('aktiva/delete/'.$key->id_aktiva.'/'.$key->id_lokasi);?>"
+												class="btn btn-danger btn-sm">
+												<i class="fa fa-trash"> Delete</i>
+											</a>
+										</td>
 									</tr>
 									<?php $no++; } ?>
 								</tbody>
@@ -166,7 +191,8 @@
 							</div>
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
-							<a href="<?= site_url('lokasi/detail/'.$lokasi->id_lokasi); ?>" class="btn btn-danger btn-sm">Cancel</a>
+							<a href="<?= site_url('lokasi/detail/'.$lokasi->id_lokasi); ?>"
+								class="btn btn-danger btn-sm">Cancel</a>
 
 						</div>
 					</div>
