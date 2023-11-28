@@ -30,9 +30,9 @@
 									<i class="fa fa-plus"></i> Tambah Data
 								</button>
 								<?php endif ?>
-								<a target="_blank" href="<?= site_url('assets/cetak');?>"
+								<!-- <a target="_blank" href="<?= site_url('assets/cetak');?>"
 									class="btn btn-success">Cetak </a>
-								<br>
+								<br> -->
 								<table id="example1" class="table table-bordered table-striped table-sm">
 									<thead>
 										<tr>
@@ -105,18 +105,18 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label>Nama Lokasi</label>
-								<input type="text" name="nama_lokasi" class="form-control" required="" placeholder="Masukkan nama barang...">
+								<label>Nama Samsat</label>
+								<input type="text" name="nama_lokasi" class="form-control" required="" placeholder="Masukkan nama samsat...">
 							</div>
 
 							<div class="form-group">
 								<label>Alamat</label>
-								<input type="text" name="alamat" class="form-control" required="" placeholder="Masukkan merk...">
+								<input type="text" name="alamat" class="form-control" required="" placeholder="Masukkan alamat...">
 							</div>
 
 							<div class="form-group">
 								<label>Link Google Maps</label>
-								<input type="text" name="link_maps" class="form-control" required="" placeholder="Masukkan type...">
+								<input type="text" name="link_maps" class="form-control" required="" placeholder="Masukkan link...">
 							</div>
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">

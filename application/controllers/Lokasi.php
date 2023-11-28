@@ -19,7 +19,7 @@ class Lokasi extends CI_Controller
 
 	public function index(){
 		if($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2 || $this->session->userdata('akses') == 3 ||  $this->session->userdata('akses') == 4){
-			$data = ['title' => "Lokasi",
+			$data = ['title' => "Samsat",
 			'lokasi' => $this->lokasi->getDatalokasi()->result(),
 			'view' => 'lokasi/view'];
 			$this->load->view('template', $data);
@@ -33,7 +33,7 @@ class Lokasi extends CI_Controller
 			$detail = $this->db->get_where('tbl_lokasi',['id_lokasi' => $id]);
 			$activa = $this->get_filtered_data($id, 'tbl_activa', 'id_lokasi');
 			
-			$data = ['title' => "Lokasi",
+			$data = ['title' => "Samsat",
 			'lokasi' => $detail->row(),
 			'barang' => $barang,
 			'aktiva' => $activa,

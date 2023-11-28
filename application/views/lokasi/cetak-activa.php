@@ -81,9 +81,9 @@
             <div style="margin-right:60px">
                 <img src="../../assets/images/jasaraharja.png" alt="Logo jasaraharja" style="width:150px">
             </div>
-            <div style="margin:0">
-                <h1 style="margin:auto 0; text-transform: uppercase; font-size:25px;">PT.JASA RAHARJA (PERSERO)</h1>
-                <p style="margin:auto 0;"><span style="text-transform: uppercase;">CABANG SUMATERA UTARA</span></p>
+            <div style="margin-left: 65px">
+                <h1 style="margin:auto 0; text-transform: uppercase; font-size:25px;">PT.JASA RAHARJA</h1>
+                <p style="margin:auto 0;"><span style="text-transform: uppercase;">CABANG PERWAKILAN KISARAN</span></p>
                 
             </div>
             
@@ -142,11 +142,11 @@
     
 </div>
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; justify-content: space-between; align-items: first baseline;">
 
     <div class="signature">
         <p class="signature-p" style="margin-bottom: 70px">Kepala Perwakilan</p>
-        <p class="signature-p">Abdul Bar</p>
+        <p class="signature-p"><?= $kepala ?></p>
     </div>
 
     <div class="signature" style="width: 300px; text-align: center;">
@@ -160,7 +160,7 @@
 
     <div class="signature" style="margin-top: 20px;">
         <p class="signature-p" style="margin-bottom: 70px">Staf Administrasi</p>
-        <p class="signature-p">M Ridho Syaffendi</p>
+        <p class="signature-p"><?= $staf ?></p>
     </div>
 
 </div>        

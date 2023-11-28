@@ -20,7 +20,7 @@
 				<div class="col-sm-5 col-12">
 					<div class="card">
 						<div class="card-header bg-black">
-							<h5 class="card-title">Detail Lokasi</h5>
+							<h5 class="card-title">Detail Samsat</h5>
 						</div>
 						<div class="card-body">
 							<dl class="row">
@@ -58,10 +58,11 @@
 									<?php endif ?>
 								</dd>
 								<dt class="col-sm-3">
-									<a href="<?= site_url('aktiva/print/'.$lokasi->id_lokasi);?>"
-										class="btn btn-warning btn-xl">
+
+									<button type="button" class="btn btn-warning btn-xl" data-toggle="modal" data-target="#modal-print">
 										<i class="fa fa-file"></i> Print
-									</a>
+									</button>
+
 								</dt>
 								<dd class="col-sm-9">
 								</dd>
@@ -169,7 +170,7 @@
 							<div class="form-group">
 								<label>Asal</label>
 								<input type="text" name="asal" class="form-control" required=""
-									placeholder="Masukkan asal...">
+									value="<?= $lokasi->nama_lokasi; ?>" disabled>
 							</div>
 
 							<div class="form-group">
@@ -184,13 +185,64 @@
 									placeholder="Masukkan jumlah...">
 							</div>
 
-							<div class="form-group">
+							<div class="form-group" style="width: 100px;">
 								<label>Tahun</label>
-								<input type="text" name="tahun" class="form-control" required=""
+								<input type="date" name="tahun" class="form-control" required=""
 									placeholder="Masukkan tahun...">
 							</div>
 
 							<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
+							<a href="<?= site_url('lokasi/detail/'.$lokasi->id_lokasi); ?>"
+								class="btn btn-danger btn-sm">Cancel</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+
+	<!-- /.modal-dialog -->
+
+
+</div>
+
+
+<div class="modal fade" id="modal-print">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Cetak Aktiva</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+
+				<form method="post" action="<?= site_url('aktiva/print/'.$lokasi->id_lokasi) ?>">
+
+
+					<div class="row">
+						<div class="col-sm-12">
+							<input type="hidden" name="id_lokasi" value="<?= $lokasi->id_lokasi ?>">
+
+							<div class="form-group">
+								<label>Kepala Perwakilan</label>
+								<input type="text" name="kepala_perwakilan" class="form-control" required=""
+									placeholder="Masukkan Kepala Perwakilan">
+							</div>
+
+							<div class="form-group">
+								<label>Staf Administrasi</label>
+								<input type="text" name="staf_administrasi" class="form-control" required=""
+									placeholder="Masukkan Staf Administrasi">
+							</div>
+
+							<button class="btn btn-warning btn-sm" type="submit">
+								<i class="fa fa-file"></i> Print
+							</button>
 							<a href="<?= site_url('lokasi/detail/'.$lokasi->id_lokasi); ?>"
 								class="btn btn-danger btn-sm">Cancel</a>
 

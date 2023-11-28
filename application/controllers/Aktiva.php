@@ -117,9 +117,12 @@ class Aktiva extends CI_Controller
 			$cek = $this->db->get_where('tbl_lokasi',['id_lokasi'=> $id])->row();
 			$activa = $this->get_filtered_data($id, 'tbl_activa', 'id_lokasi');
 
-			$data = ['title' => "Dashboard",
-					 'lokasi' =>$cek,
-					 'activa' => $activa,						''
+			$data = [
+						'title' => "Dashboard",
+						'lokasi' =>$cek,
+						'activa' => $activa,	
+						'kepala' =>  $this->input->post('kepala_perwakilan', TRUE),			
+						'staf' =>  $this->input->post('staf_administrasi', TRUE),
 					];
 			$this->load->view('lokasi/cetak-activa', $data);
 		}
