@@ -57,7 +57,7 @@
 											<td><?= $key->jenis_barang ?></td>
 											<td><?= $key->merk ?></td>
 											<td><?= $key->type ?></td>
-											<td><?= $key->jumlah ?></td>
+											<td><?=  $key->jumlah ?></td>
 											<td width="200px">
 												<center>
 													<?php if($this->session->userdata('akses') == 1 ) : ?>

@@ -92,6 +92,7 @@
 										<th scope="col">No</th>
 										<th scope="col">Jenis Barang</th>
 										<th scope="col">Jumlah</th>
+										<th scope="col">Nomor Aktiva</th>
 										<th scope="col">action</th>
 									</tr>
 								</thead>
@@ -109,6 +110,7 @@
 											?>
 										</td>
 										<td><?= $key->jumlah ?></td>
+										<td><?= $key->nomor_aktiva ?></td>
 										<td>
 											<a href="<?= site_url('aktiva/edit/'.$key->id_aktiva);?>"
 												class="btn btn-primary btn-sm">
@@ -151,6 +153,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<input type="hidden" name="id_lokasi" value="<?= $lokasi->id_lokasi ?>">
+							<input type="hidden" name="asal" value="<?= $lokasi->nama_lokasi; ?>">
 
 							<div class="form-group">
 								<label>Barang</label>
@@ -161,15 +164,15 @@
 								</select>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Nomor Aktiva</label>
 								<input type="text" name="nomor_aktiva" class="form-control" required=""
 									placeholder="Masukkan nomor activa...">
-							</div>
+							</div> -->
 
 							<div class="form-group">
 								<label>Asal</label>
-								<input type="text" name="asal" class="form-control" required=""
+								<input type="text" name="" class="form-control" required=""
 									value="<?= $lokasi->nama_lokasi; ?>" disabled>
 							</div>
 

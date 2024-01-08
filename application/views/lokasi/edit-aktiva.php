@@ -51,12 +51,12 @@
 												</select>
 											</div>
 
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label>Nomor Aktiva</label>
 												<input type="text" name="nomor_aktiva" class="form-control" required=""
 													placeholder="Masukkan nomor activa..."
 													value="<?= $edit->nomor_aktiva; ?>">
-											</div>
+											</div> -->
 
 											<div class="form-group">
 												<label>Asal</label>

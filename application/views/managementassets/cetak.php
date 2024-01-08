@@ -15,7 +15,7 @@
     <hr>
     <div class="table-responsive">
             <table id="example1" class="table table-bordered table-striped table-sm">
-               <thead>
+                <thead>
 										<tr>
 											<th>No</th>
 											<th>Jenis Barang</th>

@@ -22,12 +22,21 @@ class Aktiva extends CI_Controller
             $id_barang = $this->input->post('id_barang',TRUE);
             $jumlah = $this->input->post('jumlah',TRUE);
 
+			// kode aktiva 
+			$date = $this->input->post('tahun',TRUE);
+			$kode_jasaraharja = "0603";
+			$year = date("Y", strtotime($date));
+			$kode_loket = "E0803";
+			$kode_barang = sprintf("%03s", $id_barang);
+			$kode_aktiva = $kode_jasaraharja."-".$year."-".$kode_loket."-".$kode_barang;
+
 			$barang_detail = $this->db->get_where('tbl_barang',['id_barang' => $id_barang]);
             $barang = $barang_detail->row();
             
             $id_lokasi = $this->input->post('id_lokasi', TRUE);
 
 			$where = ['id_barang'=> $id_barang];
+			
 
             if ($jumlah > $barang->jumlah) {
                 $this->session->set_flashdata('info', "Warning!#Jumlah barang tidak cukup#1");
@@ -43,7 +52,7 @@ class Aktiva extends CI_Controller
 			$data = [
 				'id_lokasi'  => $id_lokasi,
 				'id_barang'  => $id_barang,
-				'nomor_aktiva' =>  $this->input->post('nomor_aktiva',TRUE),
+				'nomor_aktiva' =>  $kode_aktiva,
 				'asal' =>  $this->input->post('asal',TRUE),
 				'ket' =>  $this->input->post('ket',TRUE),
 				'jumlah' =>  $jumlah,
@@ -81,12 +90,19 @@ class Aktiva extends CI_Controller
 		if($this->session->userdata('akses') == 1 ){
 			$where = ['id_aktiva'=> $this->input->post('id',TRUE)];
 
-			
+			// kode aktiva 
+			$id_barang = $this->input->post('id_barang');
+			$date = $this->input->post('tahun',TRUE);
+			$kode_jasaraharja = "0603";
+			$year = date("Y", strtotime($date));
+			$kode_loket = "E0803";
+			$kode_barang = sprintf("%03s", $id_barang);
+			$kode_aktiva = $kode_jasaraharja."-".$year."-".$kode_loket."-".$kode_barang;
 
 			$data = [
 				'id_lokasi'  => $this->input->post('id_lokasi'),
-				'id_barang'  => $this->input->post('id_barang'),
-				'nomor_aktiva' =>  $this->input->post('nomor_aktiva',TRUE),
+				'id_barang'  => $id_barang,
+				'nomor_aktiva' =>  $kode_aktiva,
 				'asal' =>  $this->input->post('asal',TRUE),
 				'ket' =>  $this->input->post('ket',TRUE),
 				'jumlah' =>  $this->input->post('jumlah', TRUE),
